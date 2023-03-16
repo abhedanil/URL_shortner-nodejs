@@ -65,3 +65,5 @@ git commit -m "Add new feature"
 git push origin my-feature-branch 
 ```
 Submit a pull request. Please ensure that your code follows the project's coding style and passes all tests before submitting a pull request.
+
+Reach out to me directly at abhedanil@gmail.com
