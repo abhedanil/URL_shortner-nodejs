@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="container">
+
+
+        <h1>URL SHRINKER</h1>
+        <form action="/shorten" method="POST" class="my-4 form-inline">
+            <label for="fullUrl" class="sr-only sr-only-focusable">Full URL</label>
+            <input required placeholder="url" url type="url" name="longUrl" id="fullUrl" class="form-control col mr-2">
+            <button class="btn btn-success" type="submit">Shorten</button>
+        </form>
+        <table class="table table-striped table-responsive">
+            <thead>
+                <tr>
+                    <th>Full Url</th>
+                    <th>Short Url</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (result!=="" ){ %>
+                    <tr>
+                        <td>
+                            <%= result?.longUrl %>
+                        </td>
+                        <td> <a href="<%= result?.shortUrl %>"  id="myInput">
+                                <%= result?.shortUrl %>
+                            </a></td>
+                        <td><button class="btn btn-primary" onclick="copyFunction()">copy</button></td>
+
+                    </tr>
+                    <% } else { %>
+                        <td></td>
+                        <td></td>
+                        <% } %>
+
+
+
+            </tbody>
+        </table>
+
+
+
+    </div>
+
+    <script>
+        function copyFunction() {
+
+            const copyText = document.querySelector('#myInput').textContent;
+           
+                navigator.clipboard.writeText(copyText.value).then(function () {
+                    alert(`Text copied to clipboard ,${copyText.value}`);
+                }, function () {
+                    alert('Failed to copy text to clipboard');
+                });
+          
+        }
+    </script>
+
+</body>
+
+</html>
